@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -21,15 +23,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //make drive subsystem
-
+  DriveSubsystem driveSubsystem = new DriveSubsystem();
   //make controller
-  
+  XboxController Xboxcontroller = new XboxController(0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    
+    double leftJoystickAxis = Xboxcontroller.getLeftY();
+    double rightJoystickAxis = Xboxcontroller.getRightY();
   
+    driveSubsystem.setDefaultCommand(new RunCommand(() -> {driveSubsystem.drive(leftJoystickAxis, rightJoystickAxis);}));
   }
 
   /**
@@ -47,6 +51,7 @@ public class RobotContainer {
   public DriveSubsystem getDriveSubsystem() {
     return driveSubsystem;
   }
+  
   
   
   /**
