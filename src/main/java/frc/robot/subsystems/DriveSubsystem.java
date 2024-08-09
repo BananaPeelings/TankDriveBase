@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.*;
@@ -17,10 +18,10 @@ public class DriveSubsystem extends SubsystemBase {
    // Creating all our variables, we will initialize them and set their values later
    //create motors : motorcontrolers are talon srx/ talon fx in code : check pheonix 5 docs
    //create differential drive or arcade drive : check WPILib docs
-    WPI_TalonSRX _leftLeader;
-    WPI_TalonSRX _rightLeader;
-    WPI_TalonSRX _leftFollower;
-    WPI_TalonSRX _rightFollower;
+    WPI_TalonFX _leftLeader;
+    WPI_TalonFX _rightLeader;
+    WPI_TalonFX _leftFollower;
+    WPI_TalonFX _rightFollower;
     DifferentialDrive _drive;
 
 
@@ -29,10 +30,10 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     
    //initialize motor controllers
-    _leftLeader = new WPI_TalonSRX(Constants.leftLeaderCANID);
-    _leftFollower = new WPI_TalonSRX(Constants.leftFollowerCANID);
-    _rightLeader = new WPI_TalonSRX(Constants.rightLeaderCANID);
-    _rightFollower = new WPI_TalonSRX(Constants.rightFollowerCANID);
+    _leftLeader = new WPI_TalonFX(Constants.leftLeaderCANID);
+    _leftFollower = new WPI_TalonFX(Constants.leftFollowerCANID);
+    _rightLeader = new WPI_TalonFX(Constants.rightLeaderCANID);
+    _rightFollower = new WPI_TalonFX(Constants.rightFollowerCANID);
     
     //set to factory defaults
       _leftLeader.configFactoryDefault();

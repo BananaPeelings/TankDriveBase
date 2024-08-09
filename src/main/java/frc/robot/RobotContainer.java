@@ -30,10 +30,11 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    double leftJoystickAxis = Xboxcontroller.getLeftY();
-    double rightJoystickAxis = Xboxcontroller.getRightY();
+    
   
-    driveSubsystem.setDefaultCommand(new RunCommand(() -> {driveSubsystem.drive(leftJoystickAxis, rightJoystickAxis);}));
+    driveSubsystem.setDefaultCommand(
+      new RunCommand(() ->
+       driveSubsystem.drive(0.55*Xboxcontroller.getLeftY(), 0.55*Xboxcontroller.getRightY()), driveSubsystem));
   }
 
   /**
